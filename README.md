@@ -3,7 +3,8 @@
 _Last updated_: 7 March 2021
 
 ## Installs
-- Processing of .bcl files to .fastq files and alignment/processing of single-cell data for mtscATAC-seq libraries are directly enabled by [CellRanger-ATAC](https://support.10xgenomics.com/single-cell-atac/software/pipelines/latest/what-is-cell-ranger-atac)
+- Processing of .bcl files to .fastq files and alignment/processing of single-cell data for mtscATAC-seq libraries are directly enabled by [CellRanger-ATAC](https://support.10xgenomics.com/single-cell-atac/software/pipelines/latest/what-is-cell-ranger-atac).
+	- We recommend version 2.0+ of CellRanger-ATAC for computational efficiency of processing and aligning data. 
 - The `mgatk` python package for efficient genotyping of mitochondrial variants can be installed via `PyPi` via the following command:
 
 ```
