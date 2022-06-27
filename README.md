@@ -1,6 +1,6 @@
 # mtscATAC-seq computational protocol
 
-_Last updated_: 7 March 2021
+_Last updated_: 23 June 2022
 
 ## Installs
 - Processing of .bcl files to .fastq files and alignment/processing of single-cell data for mtscATAC-seq libraries are directly enabled by [CellRanger-ATAC](https://support.10xgenomics.com/single-cell-atac/software/pipelines/latest/what-is-cell-ranger-atac).
@@ -19,8 +19,12 @@ i="mtscatac_sampleID"
 dir="mito_samples/fastq"
 ref="software/refdata-cellranger-arc-GRCh38-2020-mtMask"
 
+# Align cellranger-atac samples
 cellranger-atac-2.0.0/bin/cellranger-atac count --sample $i --id "${i}_v2-hg38-mtMask" --fastqs $dir --localcores 16 --reference $ref 
-mgatk bcall -i "${i}_v2-hg38-mtMask/outs/possorted_bam.bam" -n "${i}_hg19_mask_mgatk" -o "${i}_v2-hg38-mtMask_mgatk" -b "${i}_v2-hg38-mtMask/outs/filtered_peak_bc_matrix/barcodes.tsv" -bt CB -c 16 -jm 12000m -g rCRS -qc 
+
+# Now run mgatk
+mgatk bcall -i "${i}_v2-hg38-mtMask/outs/possorted_bam.bam" -n "${i}_hg19_mask_mgatk" -o "${i}_v2-hg38-mtMask_mgatk" \
+	-b "${i}_v2-hg38-mtMask/outs/filtered_peak_bc_matrix/barcodes.tsv" -bt CB -c 16 -jm 12000m -g rCRS -qc 
 ```
 
 These encompass steps 44 and 45 in the protocol. 
